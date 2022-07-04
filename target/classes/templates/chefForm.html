@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Dettagli chef</title>
+</head>
+
+<body>
+	<div class="parent">
+
+		<div class="child">
+			<form method="POST" th:action="@{/chef}" th:object="${chef}">
+				<div class="error-text" th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}"> this will contain errors </p>
+				</div>
+
+				<table class="greyGridTable">
+					<tbody>
+						<tr>
+							<td>Nome:</td>
+							<td>
+								<label>
+									<input th:field="*{nome}" type="text" />
+								</label>
+							</td>
+							<td><span class="error-text" th:errors="*{nome}"
+									th:if="${#fields.hasErrors('nome')}">error 
+									nome</span></td>
+						</tr>
+						<tr>
+							<td>Cognome:</td>
+							<td>
+								<label>
+									<input th:field="*{cognome}" type="text" />
+								</label>
+							</td>
+							<td><span class="error-text" th:errors="*{cognome}"
+									th:if="${#fields.hasErrors('cognome')}">error 
+									cognome</span></td>
+						</tr>
+						<tr>
+							<td>Nazionalita:</td>
+							<td><label>
+									<input th:field="*{nazionalita}" type="text" />
+								</label>
+							</td>
+							<td><span class="error-text" th:errors="*{nazionalita}"
+									th:if="${#fields.hasErrors('nazionalita')}">error
+									nazionalita</span></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="greyGridTable">
+					<tbody>
+						<tr>
+							<td>Picture</td>
+							<td>
+								<input type="file" />
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="btn-div">
+					<span><button type="submit">Confirm</button></span>
+				</div>
+		</div>
+		</form>
+	</div>
+</body>
+
+</html>

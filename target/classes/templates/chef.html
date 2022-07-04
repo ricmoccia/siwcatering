@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel=stylesheet href="base.css">
+	<title>Index</title>
+</head>
+
+<body>	
+
+	<div class="parent">
+
+		<div class="child, descr" th:if="${chef}">
+
+			<h1 th:text="${chef.nome} + ' ' + ${chef.cognome}">Carlo Cracco </h1>
+			<span th:text="${chef.nazionalita}">italiano</span>
+			<ul>
+				<li th:each="buffet : ${chef.buffets}">
+					<a href="ingrediente.html/0" th:href="@{'/buffet' + '/' + ${buffet.id}}"
+						th:text="${buffet.nome} + ', ' + ${buffet.descrizione}">NomeBuffet,
+						DescrizioneBuffet</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="child">
+			<!--mettere immagine-->
+		</div>
+
+	</div>
+</body>
+
+</html>
